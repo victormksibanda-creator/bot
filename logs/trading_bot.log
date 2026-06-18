@@ -1,0 +1,52 @@
+2026-06-14 13:15:05 - ForexTradingBot - INFO - Configuration validated successfully
+2026-06-14 13:15:05 - ForexTradingBot - ERROR - Database connection failed: Connection configuration not valid: Unsupported argument 'allow_local_outfile'
+2026-06-14 13:15:05 - ForexTradingBot - ERROR - Failed to start trading bot: Connection configuration not valid: Unsupported argument 'allow_local_outfile'
+Traceback (most recent call last):
+  File "/Users/work/Downloads/untitled folder/.venv/lib/python3.9/site-packages/mysql/connector/pooling.py", line 463, in set_config
+    test_cnx.config(**kwargs)
+  File "/Users/work/Downloads/untitled folder/.venv/lib/python3.9/site-packages/mysql/connector/abstracts.py", line 660, in config
+    raise AttributeError(f"Unsupported argument '{key}'") from None
+AttributeError: Unsupported argument 'allow_local_outfile'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/work/Downloads/untitled folder/forex-trading-bot/main.py", line 524, in main
+    bot = ForexTradingBot(config, logger)
+  File "/Users/work/Downloads/untitled folder/forex-trading-bot/main.py", line 136, in __init__
+    self.db = get_db_manager(
+  File "/Users/work/Downloads/untitled folder/forex-trading-bot/src/database/db_connection.py", line 439, in get_db_manager
+    _db_manager = DatabaseManager(host, user, password, database, **kwargs)
+  File "/Users/work/Downloads/untitled folder/forex-trading-bot/src/database/db_connection.py", line 73, in __init__
+    self.pool = pooling.MySQLConnectionPool(
+  File "/Users/work/Downloads/untitled folder/.venv/lib/python3.9/site-packages/mysql/connector/pooling.py", line 427, in __init__
+    self.set_config(**kwargs)
+  File "/Users/work/Downloads/untitled folder/.venv/lib/python3.9/site-packages/mysql/connector/pooling.py", line 467, in set_config
+    raise PoolError(f"Connection configuration not valid: {err}") from err
+mysql.connector.errors.PoolError: Connection configuration not valid: Unsupported argument 'allow_local_outfile'
+2026-06-14 13:15:55 - ForexTradingBot - INFO - Configuration validated successfully
+2026-06-14 13:15:55 - ForexTradingBot - ERROR - Database connection failed: Connection configuration not valid: Unsupported argument 'allow_local_outfile'
+2026-06-14 13:15:55 - ForexTradingBot - ERROR - Failed to start trading bot: Connection configuration not valid: Unsupported argument 'allow_local_outfile'
+Traceback (most recent call last):
+  File "/Users/work/Downloads/untitled folder/.venv/lib/python3.9/site-packages/mysql/connector/pooling.py", line 463, in set_config
+    test_cnx.config(**kwargs)
+  File "/Users/work/Downloads/untitled folder/.venv/lib/python3.9/site-packages/mysql/connector/abstracts.py", line 660, in config
+    raise AttributeError(f"Unsupported argument '{key}'") from None
+AttributeError: Unsupported argument 'allow_local_outfile'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/work/Downloads/untitled folder/forex-trading-bot/main.py", line 524, in main
+    bot = ForexTradingBot(config, logger)
+  File "/Users/work/Downloads/untitled folder/forex-trading-bot/main.py", line 136, in __init__
+    self.db = get_db_manager(
+  File "/Users/work/Downloads/untitled folder/forex-trading-bot/src/database/db_connection.py", line 439, in get_db_manager
+    _db_manager = DatabaseManager(host, user, password, database, **kwargs)
+  File "/Users/work/Downloads/untitled folder/forex-trading-bot/src/database/db_connection.py", line 73, in __init__
+    self.pool = pooling.MySQLConnectionPool(
+  File "/Users/work/Downloads/untitled folder/.venv/lib/python3.9/site-packages/mysql/connector/pooling.py", line 427, in __init__
+    self.set_config(**kwargs)
+  File "/Users/work/Downloads/untitled folder/.venv/lib/python3.9/site-packages/mysql/connector/pooling.py", line 467, in set_config
+    raise PoolError(f"Connection configuration not valid: {err}") from err
+mysql.connector.errors.PoolError: Connection configuration not valid: Unsupported argument 'allow_local_outfile'

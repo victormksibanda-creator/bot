@@ -1,0 +1,170 @@
+# Git ignore patterns for Forex Trading Bot
+
+# ============================================================================
+# Python & Virtual Environment
+# ============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+venv/
+ENV/
+env/
+.venv
+
+# ============================================================================
+# IDE & Editor Files
+# ============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# ============================================================================
+# CRITICAL: Environment & Secrets
+# ============================================================================
+# NEVER commit these files - they contain credentials!
+.env
+.env.local
+.env.*.local
+.env.production
+*.env
+secrets.json
+credentials.json
+
+# ============================================================================
+# Database & Backup Files
+# ============================================================================
+*.sql
+*.sql.gz
+backups/
+*.bak
+*.backup
+dump.sql
+
+# ============================================================================
+# Logs & Temporary Files
+# ============================================================================
+logs/
+*.log
+*.log.*
+tmp/
+temp/
+*.tmp
+
+# ============================================================================
+# OS Files
+# ============================================================================
+.DS_Store
+Thumbs.db
+*.lnk
+.directory
+
+# ============================================================================
+# Testing & Coverage
+# ============================================================================
+.pytest_cache/
+.coverage
+coverage/
+htmlcov/
+.nose*
+.tox/
+
+# ============================================================================
+# IDE Generated Files
+# ============================================================================
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pylint.d/
+
+# ============================================================================
+# Project-specific Files
+# ============================================================================
+config.local.py
+local_config.py
+settings.local.py
+
+# ============================================================================
+# Data Files (if storing locally)
+# ============================================================================
+data/
+*.xlsx
+*.csv
+*.json
+!docs/*.json
+
+# ============================================================================
+# Documentation Build Files
+# ============================================================================
+docs/_build/
+site/
+
+# ============================================================================
+# CI/CD
+# ============================================================================
+.github/workflows/*.log
+.gitlab-ci.log
+
+# ============================================================================
+# VSCode specific files (keep configs but not workspace settings)
+# ============================================================================
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+!.vscode/extensions.json
+
+# ============================================================================
+# Node modules (if using package.json for any reason)
+# ============================================================================
+node_modules/
+
+# ============================================================================
+# Package lock files (can be problematic in teams)
+# ============================================================================
+poetry.lock
+pipfile.lock
+
+# ============================================================================
+# Cache files
+# ============================================================================
+.cache/
+*.cache
+
+# Keep tracked:
+# ============================================================================
+# These are intentionally tracked:
+# - requirements.txt (dependencies)
+# - .gitignore (this file)
+# - src/ (source code)
+# - config/ (config templates, NOT secrets)
+# - scripts/ (database schemas, deployment scripts)
+# - docs/ (documentation)
+# - .env.example (template for .env)
+# - main.py (entry point)
+# - README.md (documentation)
