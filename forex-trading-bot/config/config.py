@@ -42,11 +42,11 @@ class Config:
     
     # ========== Database Configuration ==========
     # Get from environment variables (REQUIRED for security)
-    DB_HOST = os.getenv('DB_HOST', 'localhost')
-    DB_PORT = int(os.getenv('DB_PORT', '3306'))
-    DB_USER = os.getenv('DB_USER', 'forex_bot_user')
-    DB_PASSWORD = os.getenv('DB_PASSWORD', '')  # MUST be set in production
-    DB_NAME = os.getenv('DB_NAME', 'forex_trading_bot')
+    DB_HOST = os.getenv('DB_HOST') or os.getenv('MYSQLHOST', 'localhost')
+    DB_PORT = int(os.getenv('DB_PORT') or os.getenv('MYSQLPORT', '3306'))
+    DB_USER = os.getenv('DB_USER') or os.getenv('MYSQLUSER', 'forex_bot_user')
+    DB_PASSWORD = os.getenv('DB_PASSWORD') or os.getenv('MYSQLPASSWORD', '')  # MUST be set in production
+    DB_NAME = os.getenv('DB_NAME') or os.getenv('MYSQLDATABASE', 'forex_trading_bot')
     
     # Connection pool settings
     DB_POOL_SIZE = int(os.getenv('DB_POOL_SIZE', '10'))

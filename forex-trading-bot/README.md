@@ -174,6 +174,97 @@ python main.py --test-broker
 python main.py
 ```
 
+## 🚆 Deploy Bot + MySQL On Railway
+
+Railway's MySQL service exposes these variables:
+
+```env
+MYSQLHOST
+MYSQLPORT
+MYSQLUSER
+MYSQLPASSWORD
+MYSQLDATABASE
+MYSQL_URL
+```
+
+The bot automatically maps those to its own database settings, so you do not
+need to manually duplicate them as `DB_HOST`, `DB_PORT`, etc. unless you want to.
+
+### 1. Create Railway Project
+
+1. Create a new Railway project.
+2. Add a **MySQL** database service.
+3. Add a second service from your GitHub repo for this bot.
+
+Railway's MySQL docs list the connection variables above and note that services
+in the same project can reference them directly.
+
+### 2. Connect Bot Service To MySQL
+
+In the bot service variables, add references to the MySQL service variables if
+Railway does not add them automatically:
+
+```env
+MYSQLHOST=${{ MySQL.MYSQLHOST }}
+MYSQLPORT=${{ MySQL.MYSQLPORT }}
+MYSQLUSER=${{ MySQL.MYSQLUSER }}
+MYSQLPASSWORD=${{ MySQL.MYSQLPASSWORD }}
+MYSQLDATABASE=${{ MySQL.MYSQLDATABASE }}
+```
+
+If your MySQL service has a different name, replace `MySQL` with that service
+name.
+
+### 3. Add Bot Variables
+
+For safe first deployment, use mock broker mode:
+
+```env
+TRADING_BOT_ENV=development
+MOCK_BROKER=true
+LOG_DIR=/tmp/logs
+DB_POOL_SIZE=3
+```
+
+For OANDA demo mode later:
+
+```env
+BROKER_NAME=Oanda
+BROKER_ACCOUNT_NUMBER=your_oanda_demo_account_id
+BROKER_API_KEY=your_oanda_api_token
+REST_API_BASE_URL=https://api-fxpractice.oanda.com/v3
+MOCK_BROKER=false
+```
+
+### 4. Initialize The Database Schema
+
+In the Railway bot service, run:
+
+```bash
+python scripts/init_railway_database.py
+```
+
+This creates the tables, indexes, views, and stored procedures from
+`scripts/001_create_database_schema.sql` inside Railway MySQL.
+
+### 5. Verify Before Running
+
+Use Railway's service shell or set the start command temporarily:
+
+```bash
+python main.py --test-db
+python main.py --test-broker
+```
+
+When both pass, use the normal Railway start command:
+
+```bash
+python main.py
+```
+
+The repository includes `railway.toml`, so Railway will use `python main.py`
+as the deploy start command by default.
+
 ## 📊 Database Architecture
 
 ### Core Tables
